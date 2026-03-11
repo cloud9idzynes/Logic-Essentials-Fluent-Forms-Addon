@@ -1,3 +1,41 @@
+=== Logic Essentials Fluent Forms Addon ===
+Contributors: logicessentials
+Tags: fluent forms
+Requires at least: 5.8
+Tested up to: 6.5
+Stable tag: 1.0.1
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+An essential integration addon for Fluent Forms.
+
+### Description
+
+**Logic Essentials Fluent Forms Addon** is a powerful integration that extends Fluent Forms functionality.
+
+#### Installation
+
+1. Upload the plugin files to the<mark> /wp-content/plugins/logic-essentials-fluent-forms-addon</mark> directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the <mark>'Plugins'</mark> screen in <mark>WordPress</mark>.
+3. Use the <mark>Settings->Logic Essentials</mark> screen to configure the plugin.
+
+#### Frequently Asked Questions
+
+Q: Does this require Fluent Forms?
+A: Yes, you must have Fluent Forms installed and activated to use this addon.
+
+Changelog
+
+1.0.0
+
+* Initial release 03/07/2026
+
+**
+
+---
+
+**
+
 # Logic Essentials: Fluent Forms Addon
 
 **Version:** 1.0.0 (MVP)
@@ -58,7 +96,7 @@ To verify that both the visual frontend and the backend database hooks are funct
 
 1. Go to **Fluent Forms** in your WordPress dashboard and create a "New Blank Form".
 
-2. Add a **Dropdown** field (Name it "Budget") and give it two options: "Under $1k" and "Over $1k".
+2. Add a **Dropdown** field (Name it "Budget") and give it two options: "Under 1k" and "Over 1k".
 
 3. Add a **Single Line Text** field right below it (Name it "Enterprise Requirements").
 
@@ -85,3 +123,26 @@ To verify that both the visual frontend and the backend database hooks are funct
 3. Go to **Fluent Forms > Entries** and view the submission you just made.
 
 4. **Expected Result:** The entry should *only* show the "Budget" answer. The data for "Enterprise Requirements" should be completely missing from the database record, proving your `fluentform/before_insert_submission` hook successfully intercepted and purged the hidden data.
+
+**
+
+---
+
+**
+
+📁 logic-essentials-fluent-forms-addon/
+│
+├── 📁 assets/ <-- KEEP (Contains your JS/CSS)
+│ ├── js/
+│ │ └── frontend-runtime.js
+│ └── css/
+│
+├── 📁 includes/ <-- KEEP (Contains your backend PHP)
+│ └── class-le-ffa-integration.php
+│
+├── 📄 logic-essentials-fluent-forms-addon.php <-- KEEP (Main plugin file)
+├── 📄 readme.txt (or README.md) <-- KEEP (The docs we just wrote)
+│
+├── 📁 fluentform/ <-- EXCLUDE (Used for AI context only)
+├── 📄 fluentform.6.1.20.zip <-- EXCLUDE (Used for AI context only)
+└── 📄 Feature Specification...md <-- EXCLUDE (Internal PRD, keep locally)

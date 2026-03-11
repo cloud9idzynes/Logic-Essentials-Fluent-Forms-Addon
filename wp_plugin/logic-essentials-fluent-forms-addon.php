@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Logic Essentials Fluent Forms Addon
  * Description: An essential integration addon for Fluent Forms.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Logic Essentials
  * Author URI: https://example.com
  * Text Domain: logic-essentials-fluent-forms-addon
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('LE_FFA_VERSION', '1.0.0');
+define('LE_FFA_VERSION', '1.0.1');
 define('LE_FFA_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LE_FFA_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -72,3 +72,24 @@ function le_ffa_admin_notice_missing_fluent_forms()
         esc_html__('Logic Essentials Fluent Forms Addon requires Fluent Forms to be installed and active. Please install or activate Fluent Forms.', 'logic-essentials-fluent-forms-addon')
     );
 }
+
+/**
+ * Intercept submissions to purge hidden fields data.
+ *
+ * @param array $insertData The data to be inserted into the database.
+ * @param array $data The raw submitted data.
+ * @param object $form The form object.
+ */
+function le_ffa_intercept_submission($insertData, $data, $form)
+{
+    // Data Integrity: capture submission data before anything else
+    $purge_candidate = $insertData;
+
+    // Log the variables to WordPress debug.log
+    error_log('=== LE FFA: Purge Candidate ===');
+    error_log(print_r($purge_candidate, true));
+    
+    error_log('=== LE FFA: Form Object ===');
+    error_log(print_r($form, true));
+}
+add_action('fluentform/before_insert_submission', 'le_ffa_intercept_submission', 10, 3);
