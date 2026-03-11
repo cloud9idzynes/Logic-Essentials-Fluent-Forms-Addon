@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Logic Essentials Fluent Forms Addon
  * Description: An essential integration addon for Fluent Forms.
- * Version: 1.0.1
- * Author: Logic Essentials
- * Author URI: https://example.com
+ * Version: 1.0.2
+ * Author: Cloud 9 AI Studios
+ * Author URI: https://cloud9aistudios.com
  * Text Domain: logic-essentials-fluent-forms-addon
  * Domain Path: /languages/
  *
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('LE_FFA_VERSION', '1.0.1');
+define('LE_FFA_VERSION', '1.0.2');
 define('LE_FFA_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LE_FFA_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -88,7 +88,7 @@ function le_ffa_intercept_submission($insertData, $data, $form)
     // Log the variables to WordPress debug.log
     error_log('=== LE FFA: Purge Candidate ===');
     error_log(print_r($purge_candidate, true));
-    
+
     error_log('=== LE FFA: Form Object ===');
     error_log(print_r($form, true));
 }
